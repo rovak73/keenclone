@@ -1,0 +1,23 @@
+{
+  "name": "keenclone",
+  "version": "0.0.1",
+  "description": "Keen clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "python3 manage.py runserver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rovak73/keenclone.git"
+  },
+  "keywords": [
+    "keen",
+    "clone"
+  ],
+  "author": "Ronald van Klaveren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rovak73/keenclone/issues"
+  },
+  "homepage": "https://github.com/rovak73/keenclone#readme"
+}
