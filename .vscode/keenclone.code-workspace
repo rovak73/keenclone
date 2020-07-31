@@ -1,0 +1,41 @@
+{
+  "folders": [
+    {
+      "path": "../keenclone"
+    }
+  ],
+  "settings": {
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "eslint.alwaysShowStatus": true,
+    "eslint.format.enable": true,
+    "python.pythonPath": "env/bin/python",
+    "django.snippets.exclude": [
+      "cms",
+      "wagtail"
+    ],
+    "liveSassCompile.settings.excludeList": [
+      "**/node_modules/**",
+      ".vscode/**"
+    ],
+    "liveSassCompile.settings.formats": [
+      {
+        "format": "compressed",
+        "extensionName": ".min.css",
+        "savePath": "/wagcms/wagcms/static/css"
+      },
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: Current File",
+        "type": "python",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal"
+      }
+    ]
+  }
+}

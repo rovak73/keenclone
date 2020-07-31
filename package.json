@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/rovak73/keenclone/issues"
   },
-  "homepage": "https://github.com/rovak73/keenclone#readme"
+  "homepage": "https://github.com/rovak73/keenclone#readme",
+  "dependencies": {
+    "tailwindcss": "^1.6.0"
+  }
 }
