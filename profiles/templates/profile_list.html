@@ -1,0 +1,6 @@
+<h1>Profiles</h1>
+{% for profiles in object_list %}
+  <ul>
+    <li><a href="{{ profile.get_absolute_url }}">{{ profile.profile_name }}</a></li>
+  </ul>
+{% endfor %}
