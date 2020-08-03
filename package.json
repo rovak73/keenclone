@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "Keen clone",
   "main": "index.js",
-  "scripts": {
-    "test": "python3 manage.py runserver"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rovak73/keenclone.git"
@@ -21,6 +19,6 @@
   },
   "homepage": "https://github.com/rovak73/keenclone#readme",
   "dependencies": {
-    "tailwindcss": "^1.6.0"
+    "tailwindcss": "^1.6.2"
   }
 }

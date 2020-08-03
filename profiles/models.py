@@ -16,12 +16,17 @@ class Profile(models.Model):
     )
     # DATABASE FIELDS
 
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    picture = models.ImageField(default='default.jpg', upload_to='profile_pics', max_length=255)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        )
+    picture = models.ImageField(default='default.jpg', upload_to='profile_pics', max_length=255, null=True, blank=True)
     profile_name = models.CharField(unique=True, max_length=255, null=True, blank=True)
     slug = models.SlugField(
         default=slugify(profile_name),
-        unique=True
+        unique=True,
+        null=True,
+        blank=True
         )
     first_name = models.CharField(max_length=32, null=True, blank=True)
     last_name = models.CharField(max_length=32, null=True, blank=True)
@@ -29,8 +34,8 @@ class Profile(models.Model):
     city = models.CharField(max_length=32, null=True, blank=True)
     country = models.CharField(max_length=32, null=True, blank=True)
     rut = models.CharField(max_length=12, null=True, blank=True)
-    profile = models.CharField(max_length=1024, null=True, blank=True)
-    specialty =  models.CharField(max_length=1, choices=SPECIALTIES)
+    profile = models.TextField(max_length=1280, null=True, blank=True)
+    specialty =  models.CharField(max_length=1, choices=SPECIALTIES, null=True, blank=True)
         
     # MANAGERS
     # objects = models.Manager()
@@ -47,12 +52,13 @@ class Profile(models.Model):
 
     # SAVE METHOD
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.profile_name)
+        if not self.slug:
+            self.slug = slugify(self.profile_name)
         return super(Profile, self).save(*args, **kwargs)
 
     # ABSOLUTE URL METHOD
     def get_absolute_url(self):
-        return reverse('profile_detail', kwargs={'slug': self.slug}) 
+        return reverse('profile-detail', kwargs={'slug': self.slug}) 
 
     # OTHER METHODS
     # @receiver(user_signed_up)

@@ -4,8 +4,12 @@ from .models import Profile
 
 # Register your models here.
 
-admin.site.register(Profile)
 
+
+class ProfileAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('profile_name',)}
+
+admin.site.register(Profile)
 # class UserProfile(admin,ModelAdmin):
     # fieldsets = (
     #     (None, {'fields': ('email', 'password', 'name', 'last_login')}),

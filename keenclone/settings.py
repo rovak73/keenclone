@@ -25,7 +25,7 @@ SECRET_KEY = '&+06i=)*&jm7p*v-+ku0!9r7ho1%42g8hr#mchw)=no+^t@&b9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*.keenclone.dev', '127.0.0.1']
 
 
 # Application definition
@@ -33,6 +33,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend', # existing backend
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,13 +43,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'profiles',
+    'profiles.apps.ProfilesConfig',
+    'keenclone',
 
     'django.contrib.sites',  # make sure sites is included
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+
+    'django_extensions'
 ]
 
 SOCIALACCOUNT_PROVIDERS = \
@@ -90,7 +94,7 @@ AUTH_USER_MODEL = 'users.User'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

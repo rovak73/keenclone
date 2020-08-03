@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import ProfileDetailView, ProfileListView
-
-
+from .views import ProfileDetailView, ProfileListView, profile_form
+from django.views.generic.edit import FormView
+from . import views
 
 # urlpatterns = [
 #   path('profile/', views.profile_list, name='profiles'),
@@ -9,6 +9,7 @@ from .views import ProfileDetailView, ProfileListView
 # ]
 
 urlpatterns = [
-  path('<slug:slug>', ProfileDetailView.as_view(), name = 'profile_detail'),
-  path('', ProfileListView.as_view(), name = 'profile_list'),
+  path('profile/<slug:slug>/', ProfileDetailView.as_view(), name = 'profile-detail'),
+  path('profile/', ProfileListView.as_view(), name = 'profile-list'),
+  path('edit/', profile_form, name = 'profile-edit'),
 ]
