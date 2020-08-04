@@ -1,4 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
 <h1>Profiles</h1>
+
 {% for profile in object_list %}
   <ul>
     <li><a href="{{ profile.get_absolute_url }}">{{ profile.profile_name }}</a></li>
@@ -7,3 +13,4 @@
     <li>No profiles yet.</li>
 {% endfor %}
 
+{% endblock %}

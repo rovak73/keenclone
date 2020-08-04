@@ -8,11 +8,11 @@ from django.http import HttpResponseRedirect
 
 class ProfileListView(ListView):
     model = Profile
-    template_name = "profile_list.html"
+    template_name = "profiles/profile_list.html"
 
 class ProfileDetailView(DetailView):
     model = Profile
-    template_name = "profile_detail.html"
+    template_name = "profiles/profile_detail.html"
 
 
 def profile_form(request):
@@ -30,7 +30,7 @@ def profile_form(request):
         'form': form
     }
     
-    return render(request, 'profile_edit.html', context)
+    return render(request, 'profiles/profile_edit.html', context)
 
 # class ProfileCreateView(generic_view.CreateView):
 #     model = Profile

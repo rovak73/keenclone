@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/rovak73/keenclone#readme",
   "dependencies": {
+    "postcss-import": "^12.0.1",
     "tailwindcss": "^1.6.2"
   }
 }

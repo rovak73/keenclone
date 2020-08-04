@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import Home
+from django.conf import settings
 # from django.conf.urls import url
 
 
@@ -26,3 +27,9 @@ urlpatterns = [
     path('', include('profiles.urls')),
     # url(r'^accounts/', include('allauth.urls')),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
