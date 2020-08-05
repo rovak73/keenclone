@@ -17,14 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import Home
 from django.conf import settings
+from django.conf.urls import url
 # from django.conf.urls import url
 
 
 urlpatterns = [
     path('', Home.as_view(), name = 'home'),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name = 'admin'),
     path('accounts/', include('allauth.urls')),
     path('', include('profiles.urls')),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
+    path('reviews/', include('reviews.urls')),
     # url(r'^accounts/', include('allauth.urls')),
 ]
 

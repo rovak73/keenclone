@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from .forms import ProfileForm
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 
 class ProfileListView(ListView):
@@ -14,10 +15,10 @@ class ProfileDetailView(DetailView):
     model = Profile
     template_name = "profiles/profile_detail.html"
 
-
+@login_required
 def profile_form(request):
 
-    user_profile = Profile.objects.get(user=request.user)
+    user_profile, created = Profile.objects.update_or_create(user=request.user)
     form = ProfileForm(instance=user_profile) # GET method
     if request.method == "POST":
         # Don't forget the request.POST !

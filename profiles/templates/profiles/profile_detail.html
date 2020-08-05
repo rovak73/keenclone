@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
+{% load ratings %}
+
 {% block content %}
 
-<div>
-  <h2>{{ object.profile_name }}</h2>
-  <p>{{ object.profile }}</p>
+
+
+<div class="card">
+  <h5 class="card-header">{{ object.profile_name }}</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{ object.profile }}</h5>
+    <p class="card-text">{% ratings object %}</p>
+    <a href="{% url 'profile-edit' %}" class="btn btn-primary">Edit Profile</a>
+  </div>
 </div>
-
-<a href="{% url 'profile-edit' %}" class=""><span class="">Edit Profile</span></a>
-
 {% endblock %}

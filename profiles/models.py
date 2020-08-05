@@ -5,7 +5,8 @@ from allauth.account.signals import user_signed_up
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.urls import reverse
-from django.template.defaultfilters import slugify
+from uuslug import uuslug, slugify
+
 
 class Profile(models.Model):
     # CHOICES
@@ -23,9 +24,8 @@ class Profile(models.Model):
     picture = models.ImageField(default='default.jpg', upload_to='profile_pics', max_length=255, null=True, blank=True)
     profile_name = models.CharField(unique=True, max_length=255, null=True, blank=True)
     slug = models.SlugField(
-        default=slugify(profile_name),
-        unique=True,
-        null=True,
+        unique=False,
+        null=False,
         blank=True
         )
     first_name = models.CharField(max_length=32, null=True, blank=True)
@@ -48,13 +48,19 @@ class Profile(models.Model):
 
     # TO STRING METHOD
     def __str__(self):
-        return self.profile_name
+        return str(self.profile_name)
 
     # SAVE METHOD
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs): # new
         if not self.slug:
             self.slug = slugify(self.profile_name)
-        return super(Profile, self).save(*args, **kwargs)
+        return super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.slug = uuslug(self.profile_name, instance=self)
+    #     super(Profile, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.slug = self.slug or slugify(self.profile_name)
+    #     super().save(*args, **kwargs)
 
     # ABSOLUTE URL METHOD
     def get_absolute_url(self):

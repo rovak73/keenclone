@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     # 'tailwind',
     # 'theme',
     'debug_toolbar',
+    'star_ratings',
+    'reviews',
 
     'django.contrib.sites',  # make sure sites is included
     'allauth',
