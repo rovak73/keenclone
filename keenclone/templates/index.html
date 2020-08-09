@@ -1,0 +1,51 @@
+{% load static reviews i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/star-rating.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+    <script type="text/javascript" src="{% static 'js/sticky-sidebar.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/star-rating.js' %}"></script>
+
+    <title>{% block head_title %}{% trans "Keenclone" %}{% endblock %}</title>        
+    {% block extra_head %}
+    {% endblock %}
+    
+</head>
+
+
+
+
+<body>
+    <div class="container">
+        {% include "nav/messages.html" %}
+        {% include "nav/navbar.html" %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block extra_body %}
+        {% endblock %}
+
+        {% block extralinks %}
+        {% endblock %}
+    </div>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+</body>
+
+</html>
