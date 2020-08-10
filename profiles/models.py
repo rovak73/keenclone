@@ -6,6 +6,8 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.urls import reverse
 from uuslug import uuslug, slugify
+from django.db.models.signals import post_save
+from autoslug import AutoSlugField
 
 
 class Profile(models.Model):
@@ -64,27 +66,5 @@ class Profile(models.Model):
 
     # ABSOLUTE URL METHOD
     def get_absolute_url(self):
-        return reverse('profile-detail', kwargs={'slug': self.slug}) 
+        return reverse('profile-detail', kwargs={'slug': self.slug})
 
-    # OTHER METHODS
-    # @receiver(user_signed_up)
-    # def populate_profile(sociallogin, user, **kwargs):
-
-    #     user.profile = Profile()
-
-    #     if sociallogin.account.provider == 'facebook':
-    #         user_data = user.socialaccount_set.filter(provider='facebook')[0].extra_data
-    #         picture_url = "http://graph.facebook.com/" + sociallogin.account.uid + "/picture?type=large"
-    #         email = user_data['email']
-    #         full_name = user_data['name']
-
-    #      if sociallogin.account.provider == 'google':
-    #          user_data = user.socialaccount_set.filter(provider='google')[0].extra_data
-    #          picture_url = user_data['picture']
-    #          email = user_data['email']
-    #          full_name = user_data['name']
-
-    #     user.profile.picture = picture_url
-    #     user.profile.email = email
-    #     user.profile.full_name = full_name
-    #     user.profile.save()

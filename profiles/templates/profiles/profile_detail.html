@@ -28,7 +28,7 @@
         <p class="card-text">{{ object.profile }}</p>
         <p class="card-text">{% render_review_list for profile %}</p>
         {% comment %} <p class="card-text">{% render_comment_form for profile %}</p> {% endcomment %}
-        <a href="{% url 'profile-edit' %}" class="btn btn-primary">Edit Profile</a>
+        <a href="" class="btn btn-primary">Edit Profile</a>
       </div>
       {% if user.is_authenticated %}
       <div class="card-body">

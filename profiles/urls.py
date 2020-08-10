@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ProfileDetailView, ProfileListView, profile_form
+from .views import ProfileDetailView, ProfileListView, ProfileCreate, ProfileUpdate, ProfileDelete
 from django.views.generic.edit import FormView
 from . import views
 
@@ -11,5 +11,11 @@ from . import views
 urlpatterns = [
   path('profile/<slug:slug>/', ProfileDetailView.as_view(), name = 'profile-detail'),
   path('profile/', ProfileListView.as_view(), name = 'profile-list'),
-  path('edit/', profile_form, name = 'profile-edit'),
+
+  path('profile/new/add/', ProfileCreate.as_view(), name = 'profile-create'),
+  path('profile/<slug:slug>/update/', ProfileUpdate.as_view(), name = 'profile-update'),
+  path('profile/delete/', ProfileDelete.as_view(), name = 'profile-delete'),
+
+  path('profile/create/', ProfileCreate.as_view(), name='create'),
+
 ]
