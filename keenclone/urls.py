@@ -25,7 +25,7 @@ urlpatterns = [
     path('', Home.as_view(), name = 'home'),
     path('admin/', admin.site.urls, name = 'admin'),
     path('accounts/', include('allauth.urls')),
-    path('', include('profiles.urls')),
+    path('', include('profiles.urls', namespace='profile')),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
     path('reviews/', include('reviews.urls')),
     # url(r'^accounts/', include('allauth.urls')),

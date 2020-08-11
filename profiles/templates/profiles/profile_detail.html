@@ -28,7 +28,7 @@
         <p class="card-text">{{ object.profile }}</p>
         <p class="card-text">{% render_review_list for profile %}</p>
         {% comment %} <p class="card-text">{% render_comment_form for profile %}</p> {% endcomment %}
-        <a href="" class="btn btn-primary">Edit Profile</a>
+        <a href="{% url 'profile:profile-update' slug=profile.slug %}" class="btn btn-primary">Edit Profile</a>
       </div>
       {% if user.is_authenticated %}
       <div class="card-body">

@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class ProfileListView(ListView):
@@ -19,24 +20,31 @@ class ProfileDetailView(DetailView):
     template_name = "profiles/profile_detail.html"
 
 
-class ProfileCreate(LoginRequiredMixin, CreateView):
+class ProfileCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Profile
     form_class = ProfileForm
-    success_url = reverse_lazy('profile:detail')
-
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
+    success_message = "Profile was created successfully"
+    success_url = reverse_lazy('profile:profile-list')
 
     def get_initial(self):
-        initial_base = super(ItemCreation, self).get_initial()
-        initial_base['user'] = Menu.objects.get(id=1)
-        return initial_base 
+        initial = super(ProfileCreate, self).get_initial()
+        initial.update({'email': self.request.user.email})
+        return initial
+
+    def form_valid(self, form):
+        """Force the user to request.user"""
+        self.object = form.save(commit=False)
+        self.object.user_id = self.request.user.id
+        self.object.save()
+
+        return super(ProfileCreate, self).form_valid(form)
 
 
-class ProfileUpdate(UpdateView):
+class ProfileUpdate(SuccessMessageMixin, UpdateView):
     model = Profile
     form_class = ProfileForm
+    success_message = "Profile was updated successfully"
+    success_url = reverse_lazy('profile:profile-list')
 
 
 class ProfileDelete(DeleteView):

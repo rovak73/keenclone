@@ -10,7 +10,10 @@
 {% get_rating for profile as avg_rating %}
 
 <div class="row mt-2">
+
+
     <div id="content"  class="col-sm-8 mb-5">
+
         <div class="card">
           <h5 class="card-header d-flex flex-row justify-content-between">
             <div class="d-flex "> 
@@ -35,10 +38,13 @@
               </div>
           </div>
         </div>
+
     </div>
 
-      <div id="main-content" class="col-sm-4 mb-2">
-    <div id="sidebar" class="sidebar">
+
+
+    <div id="main-content" class="col-sm-4 mb-2">
+      <div id="sidebar" class="sidebar">
         <div class="sidebar__inner">
             <!-- Content goes here -->
           <div class="card">
@@ -46,23 +52,23 @@
             <div class="card-body">
               <h5 class="card-title"></h5>
               <p class="card-text">
-              
-                        {% if rating %}
-          {{ rating }}
-          {% endif %}
-          {% if show_rating_text %}
-          {{ rating_text }}
-          {% endif %}
-              
-              
+                {% if rating %}
+                {{ rating }}
+                {% endif %}
+                {% if show_rating_text %}
+                {{ rating_text }}
+                {% endif %}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               <a href="#" class="btn btn-primary btn-block disabled" >Agenda una hora</a>
               <a href="#" class="btn btn-primary btn-block"><span class="badge rounded-pill bg-success">ahora disponible</span> Video Conferencia</a>
             </div>
           </div>
         </div>
+      </div>
     </div>
-  </div>
+
+
+</div>
 
 
 {% empty %}

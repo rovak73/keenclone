@@ -25,11 +25,7 @@ class Profile(models.Model):
         )
     picture = models.ImageField(default='default.jpg', upload_to='profile_pics', max_length=255, null=True, blank=True)
     profile_name = models.CharField(unique=True, max_length=255, null=True, blank=True)
-    slug = models.SlugField(
-        unique=False,
-        null=False,
-        blank=True
-        )
+    slug = AutoSlugField(populate_from='profile_name')
     first_name = models.CharField(max_length=32, null=True, blank=True)
     last_name = models.CharField(max_length=32, null=True, blank=True)
     address = models.CharField(max_length=64, null=True, blank=True)
@@ -66,5 +62,5 @@ class Profile(models.Model):
 
     # ABSOLUTE URL METHOD
     def get_absolute_url(self):
-        return reverse('profile-detail', kwargs={'slug': self.slug})
+        return reverse('profile:profile-detail', kwargs={'slug': self.slug})
 

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'star_ratings',
     'reviews',
+    'crispy_forms',
 
     'django.contrib.sites',  # make sure sites is included
     'allauth',
@@ -194,3 +195,7 @@ ACCOUNT_SESSION_REMEMBER = True
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# CRISPY FORMS
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
