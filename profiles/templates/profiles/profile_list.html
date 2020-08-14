@@ -28,6 +28,9 @@
           <div class="card-body">
             <h5 class="card-title"></h5>
             <p class="card-text">{{ profile.profile }}</p>
+            {% if profile.picture %}
+            <img src="{{ profile.picture.url }}" alt="{{ profile.picture }}" style="width:200px; height:200px; border-radius: 100%">
+            {% endif %}
           </div>
           <div class="card-body d-flex flex-row justify-content-between">
               <div class="d-flex "> 
@@ -60,7 +63,7 @@
                 {% endif %}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               <a href="#" class="btn btn-primary btn-block disabled" >Agenda una hora</a>
-              <a href="#" class="btn btn-primary btn-block"><span class="badge rounded-pill bg-success">ahora disponible</span> Video Conferencia</a>
+              <a href="#" class="btn btn-primary btn-block"> Video Conferencia</a>
             </div>
           </div>
         </div>

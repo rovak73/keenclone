@@ -12,16 +12,21 @@ from autoslug import AutoSlugField
 
 class Profile(models.Model):
     # CHOICES
-    SPECIALTIES = (
-        ('S', 'Small'),
-        ('M', 'Medium'),
-        ('L', 'Large'),
+    SPECIALTIES_CHOICES = (
+        ('01', 'Clarividencia'),
+        ('02', 'Exploración de Sueños'),
+        ('03', 'Tarot'),
+        ('04', 'Numerancia'),
+        ('05', 'Péndulo'),
+        ('06', 'Carta Kármica'),
     )
     # DATABASE FIELDS
 
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        null=True,
+        blank=True
         )
     picture = models.ImageField(default='default.jpg', upload_to='profile_pics', max_length=255, null=True, blank=True)
     profile_name = models.CharField(unique=True, max_length=255, null=True, blank=True)
@@ -33,7 +38,13 @@ class Profile(models.Model):
     country = models.CharField(max_length=32, null=True, blank=True)
     rut = models.CharField(max_length=12, null=True, blank=True)
     profile = models.TextField(max_length=1280, null=True, blank=True)
-    specialty =  models.CharField(max_length=1, choices=SPECIALTIES, null=True, blank=True)
+    profile_excerpt = models.TextField(max_length=280, null=True, blank=True)
+    specialty =  models.CharField(
+        max_length=2,
+        choices=SPECIALTIES_CHOICES,
+        null=True,
+        blank=True
+    )
         
     # MANAGERS
     # objects = models.Manager()
@@ -50,17 +61,15 @@ class Profile(models.Model):
 
     # SAVE METHOD
     def save(self, *args, **kwargs): # new
-        if not self.slug:
-            self.slug = slugify(self.profile_name)
-        return super().save(*args, **kwargs)
-    # def save(self, *args, **kwargs):
-    #     self.slug = uuslug(self.profile_name, instance=self)
-    #     super(Profile, self).save(*args, **kwargs)
-    # def save(self, *args, **kwargs):
-    #     self.slug = self.slug or slugify(self.profile_name)
-    #     super().save(*args, **kwargs)
+        self.slug = slugify(self.profile_name)
+        super().save(*args, **kwargs)
 
     # ABSOLUTE URL METHOD
     def get_absolute_url(self):
         return reverse('profile:profile-detail', kwargs={'slug': self.slug})
 
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()

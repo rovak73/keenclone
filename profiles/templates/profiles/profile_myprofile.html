@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="row mt-5 mb-5">
+    <div class="col-sm">
+
+        <h2>Tu cuenta </h2>
+
+    </div>
+</div>
+
+<div class="row mt-5 mb-5">
+    <div class="col-sm-4 mb-5">
+
+        {% include "nav/account_nav.html" %}
+
+    </div>
+    <div class="col-sm-8">
+
+        {% block account %}
+        {% endblock %}
+        
+    </div>
+</div>
+
+{% endblock %}

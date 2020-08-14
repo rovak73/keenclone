@@ -26,9 +26,12 @@
           {% endif %}
         </h5>
         <p class="card-text">{{ object.profile }}</p>
+        <p class="card-text">{% if profile.picture %}
+            <img src="{{ profile.picture.url }}" alt="{{ profile.picture }}" style="width:200px; height:200px; border-radius: 100%">
+            {% endif %}</p>
         <p class="card-text">{% render_review_list for profile %}</p>
         {% comment %} <p class="card-text">{% render_comment_form for profile %}</p> {% endcomment %}
-        <a href="{% url 'profile:profile-update' slug=profile.slug %}" class="btn btn-primary">Edit Profile</a>
+        {% comment %} <a href="{% url 'profile:profile-update' slug=profile.slug %}" class="btn btn-primary">Edit Profile</a> {% endcomment %}
       </div>
       {% if user.is_authenticated %}
       <div class="card-body">
@@ -60,7 +63,7 @@
               
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               <a href="#" class="btn btn-primary btn-block disabled" >Agenda una hora</a>
-              <a href="#" class="btn btn-primary btn-block"><span class="badge rounded-pill bg-success">ahora disponible</span> Video Conferencia</a>
+              <a href="#" class="btn btn-primary btn-block">Video Conferencia</a>
             </div>
           </div>
         </div>
