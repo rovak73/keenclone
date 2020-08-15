@@ -16,20 +16,23 @@
 
     <div class="card">
       <h5 class="card-header">{{ object.profile_name }} {% render_rating for profile %}</h5>
+        <div class="card-body">
+          {% if profile.picture %}
+          <img src="{{ profile.picture.url }}" alt="{{ profile.picture }}" style="width:200px; height:200px; border-radius: 100%">
+          {% endif %}
+        </div>
+      
       <div class="card-body">
-        <h5 class="card-title">
-          {% if rating %}
-          {{ rating }}
-          {% endif %}
-          {% if show_rating_text %}
-          {{ rating_text }}
-          {% endif %}
-        </h5>
-        <p class="card-text">{{ object.profile }}</p>
-        <p class="card-text">{% if profile.picture %}
-            <img src="{{ profile.picture.url }}" alt="{{ profile.picture }}" style="width:200px; height:200px; border-radius: 100%">
-            {% endif %}</p>
-        <p class="card-text">{% render_review_list for profile %}</p>
+        <p class="card-text mb-5">{{ object.profile }}</p>
+          <div class="card bg-light mb-3" style="">
+            <div class="card-body">
+              <h5 class="card-title">Especialidades</h5>
+              <p class="card-text">{{ object.specialty }}</p>
+            </div>
+        </div>
+        <div class="card-body ml-5">
+          <p class="card-text ml-5">{% render_review_list for profile %}</p>
+        </div>
         {% comment %} <p class="card-text">{% render_comment_form for profile %}</p> {% endcomment %}
         {% comment %} <a href="{% url 'profile:profile-update' slug=profile.slug %}" class="btn btn-primary">Edit Profile</a> {% endcomment %}
       </div>

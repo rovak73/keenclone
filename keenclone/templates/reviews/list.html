@@ -1,13 +1,29 @@
 {# 'static/reviews/css/reviews.css' and 'static/reviews/css/star-rating.css' should be linked somewhere in the parent template #}
-{% load reviews %}
+ {% load reviews %} {% comment %}
 <dl id="review-list">
   {% for review in review_list %}
-    <dt id="r{{ review.id }}">
+    <dt id="r{{ review.id }}"><h6>
       {% render_rating_value review.rating %}
       {{ review.submit_date }} - {{ review.user }}
+      </h6>
     </dt>
     <dd>
       <p>{{ review.comment|linebreaks }}</p>
     </dd>
+  {% endfor %}
+</dl> {% endcomment %}
+
+<dl id="review-list">
+  {% for review in review_list %}
+    <figure>
+      <blockquote class="blockquote">
+        <p>{{ review.comment|linebreaks }}</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        <dt id="r{{ review.id }}">
+        {% render_rating_value review.rating %} {{ review.submit_date }} <cite title="Source Title">{{ review.user }} {{ review.user.profile.picture }}</cite>
+        </dt>
+      </figcaption>
+    </figure>
   {% endfor %}
 </dl>
