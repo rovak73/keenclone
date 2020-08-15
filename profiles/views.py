@@ -15,6 +15,7 @@ from django.core.files.storage import FileSystemStorage
 class ProfileListView(ListView):
     model = Profile
     template_name = "profiles/profile_list.html"
+    paginate_by = 3
     queryset = Profile.objects.all()
 
 

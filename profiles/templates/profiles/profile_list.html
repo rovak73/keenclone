@@ -4,6 +4,8 @@
 
 {% block content %}
 
+{% include "nav/pagination.html" %}
+
 <h1>Profiles</h1>
 
 {% for profile in object_list %}
@@ -62,6 +64,6 @@
 No profiles yet.
 {% endfor %}
 
-
+{% include "nav/pagination.html" %}
 
 {% endblock %}
