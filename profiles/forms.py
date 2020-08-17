@@ -17,7 +17,7 @@ class ProfileFormPub(forms.ModelForm):
             'profile',
             'specialty',
             ]
-
+        widgets = {'specialty':  forms.CheckboxSelectMultiple()} 
     # def __init__(self, *args, **kwargs):
     #     current_user = kwargs.pop('current_user')
     #     super(ProfileFormPub, self).__init__(*args, **kwargs)

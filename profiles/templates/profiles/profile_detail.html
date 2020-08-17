@@ -24,12 +24,18 @@
       
       <div class="card-body">
         <p class="card-text mb-5">{{ object.profile }}</p>
-          <div class="card bg-light mb-3" style="">
+          <div class="card bg-light mr-2 mb-2" style="">
             <div class="card-body">
               <h5 class="card-title">Especialidades</h5>
-              <p class="card-text">{{ object.specialty }}</p>
+              <p class="card-text">
+                  {% for specialty in profile.specialty.all %}
+                  <a href='{{ specialty.get_absolute_url }}' class=''><button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="{{ specialty.specialty_excerpt }}">{{ specialty.specialty_name }}</button></a>
+                  {% empty %}
+                      Sin Especialidad!
+                  {% endfor %}
+              </p>
             </div>
-        </div>
+          </div>
         <div class="card-body ml-5">
           <p class="card-text ml-5">{% render_review_list for profile %}</p>
         </div>

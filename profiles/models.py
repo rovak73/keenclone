@@ -8,6 +8,7 @@ from django.urls import reverse
 from uuslug import uuslug, slugify
 from django.db.models.signals import post_save
 from autoslug import AutoSlugField
+from specialties.models import Specialty
 
 
 class Profile(models.Model):
@@ -39,12 +40,7 @@ class Profile(models.Model):
     rut = models.CharField(max_length=12, null=True, blank=True)
     profile = models.TextField(max_length=1280, null=True, blank=True)
     profile_excerpt = models.TextField(max_length=280, null=True, blank=True)
-    specialty =  models.CharField(
-        max_length=2,
-        choices=SPECIALTIES_CHOICES,
-        null=True,
-        blank=True
-    )
+    specialty =  models.ManyToManyField('specialties.Specialty', null=True, blank=True)
         
     # MANAGERS
     # objects = models.Manager()

@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="bg-light mb-2 mt-2">
+
+      <h1>{{ specialty.specialty_name }}</h1>
+      <p>{{ specialty.specialty_text }}</p>
+
+    </div>
+
+    {% include "nav/pagination.html" %}
+
+        {% for profile in specialty.profile_set.all %}
+          {% include 'profiles/profile_card_compact.html' %}
+        {% endfor %}
+
+    {% include "nav/pagination.html" %}
+
+  </div>
+</div>
+{% endblock %}

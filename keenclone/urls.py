@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('profiles.urls', namespace='profile')),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
     path('reviews/', include('reviews.urls')),
+    path('', include('specialties.urls', namespace='specialty')),
     # url(r'^accounts/', include('allauth.urls')),
 ]
 

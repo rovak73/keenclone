@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'star_ratings',
     'reviews',
     'crispy_forms',
+    'specialties',
 
     'django.contrib.sites',  # make sure sites is included
     'allauth',
