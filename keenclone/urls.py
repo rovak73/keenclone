@@ -30,6 +30,7 @@ urlpatterns = [
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
     path('reviews/', include('reviews.urls')),
     path('', include('specialties.urls', namespace='specialty')),
+    path('', include('cart.urls', namespace='cart')),
     # url(r'^accounts/', include('allauth.urls')),
 ]
 

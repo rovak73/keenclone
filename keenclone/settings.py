@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'reviews',
     'crispy_forms',
     'specialties',
+    'cart',
 
     'django.contrib.sites',  # make sure sites is included
     'allauth',
