@@ -2,13 +2,15 @@
 
 {% block content %}
 
+<div class="container">
+<div class="row mt-5">
 
-{% for item in items %}
+    {% for obj in items %}
+        {% include 'cart/item_card_compact.html' %}
+    {% endfor %}
 
-    {{ item }}
-
-{% endfor %}
-
+</div>
+</div>
 
 
 {% endblock content %}

@@ -62,15 +62,14 @@
               <h5 class="card-title"></h5>
               <p class="card-text">
               
-                        {% if rating %}
-          {{ rating }}
-          {% endif %}
-          {% if show_rating_text %}
-          {{ rating_text }}
-          {% endif %}
-              
-              
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                  {% for item in profile.item_set.all %}
+                  <a href='' class=''><button type="button" class="btn btn-outline-secondary btn-sm btn-block mb-2" data-toggle="tooltip" data-placement="top" title="">{{ item.title }} | ${{ item.price }}</button></a>
+                  {% empty %}
+                      {{ object.profile_name }} aún no ha creado productos!
+                  {% endfor %}
+              </p>
+              <p class="card-text"></p>
               <a href="#" class="btn btn-primary btn-block disabled" >Agenda una hora</a>
               <a href="#" class="btn btn-primary btn-block">Video Conferencia</a>
             </div>
