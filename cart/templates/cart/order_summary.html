@@ -1,0 +1,86 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container">
+<div class="row mt-5">
+
+<!--Table-->
+<table class="table table-hover table-fixed">
+
+  <!--Table head-->
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Oferente</th>
+            <th>Item</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+  <!--Table head-->
+
+  <!--Table body-->
+  
+    <tbody>
+        {% for order_item in object.items.all %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td><a href="{{ order_item.item.profile.get_absolute_url }}">{{ order_item.item.profile }}</a></td>
+            <td><a href="{{ order_item.item.get_absolute_url }}">{{ order_item.item.title }}</a></td>
+            <td>$ {{ order_item.item.price|stringformat:".0f" }}</td>
+            <td>
+            <a href='{% url 'cart:remove-single-item-from-cart' order_item.item.slug %}' class=''><span class="badge bg-secondary">-</span></a> 
+            {{ order_item.quantity }} 
+            <a href='{% url 'cart:add-to-cart' order_item.item.slug %}' class=''><span class="badge bg-secondary">+</span>
+            </td>
+            <td>
+            {% if order_item.item.discount_price %}
+                $ {{ order_item.get_total_discount_item_price|stringformat:".0f" }}
+                (Ahorro ${{ order_item.get_amount_saved|stringformat:".0f" }})
+            {% else %}
+                $ {{ order_item.get_total_item_price|stringformat:".0f" }}
+            {% endif %}
+            <a href='{% url 'cart:remove-from-cart' order_item.item.slug %}' class=''><span class="badge bg-secondary">remove</span>
+
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">
+                <b>No hay items en carro de compra</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <a href="/" class="btn btn-outline-success ">Continuar Comprando</a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="5">
+                <b>Total:</b>
+            </td>
+            <td>
+                <b>$ {{ object.get_total|stringformat:".0f" }}</b>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <a href="/" class="btn btn-outline-success ">Continuar Comprando</a>
+                <a href="/checkout/" class="btn btn-outline-info ">Proceder al checkout</a>
+            </td>
+        </tr>
+    </tbody>
+  
+  <!--Table body-->
+
+</table>
+<!--Table-->
+
+</div>
+</div>
+
+
+{% endblock content %}

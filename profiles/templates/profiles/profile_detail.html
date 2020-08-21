@@ -64,7 +64,7 @@
               
 
                   {% for item in profile.item_set.all %}
-                  <a href='' class=''><button type="button" class="btn btn-outline-secondary btn-sm btn-block mb-2" data-toggle="tooltip" data-placement="top" title="">{{ item.title }} | ${{ item.price }}</button></a>
+                  <a href='{{ item.get_absolute_url }}' class=''><button type="button" class="btn btn-outline-secondary btn-sm btn-block mb-2" data-toggle="tooltip" data-placement="top" title="">{{ item.title }} | ${{ item.price }}</button></a>
                   {% empty %}
                       {{ object.profile_name }} aún no ha creado productos!
                   {% endfor %}

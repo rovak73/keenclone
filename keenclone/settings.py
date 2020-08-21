@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['*.keenclone.dev', '127.0.0.1']
 
 # Application definition
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend', # existing backend
+    'django.contrib.auth.backends.ModelBackend',  # existing backend
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'specialties',
     'cart',
+    'django_countries',
 
     'django.contrib.sites',  # make sure sites is included
     'allauth',
@@ -66,25 +67,25 @@ INSTALLED_APPS = [
 
 SOCIALACCOUNT_PROVIDERS = \
     {'facebook':
-       {'METHOD': 'oauth2',
-        'SCOPE': ['email','public_profile', 'user_friends'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time'],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': lambda request: 'en_US',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.4'}}
+     {'METHOD': 'oauth2',
+      'SCOPE': ['email', 'public_profile', 'user_friends'],
+      'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+      'FIELDS': [
+          'id',
+          'email',
+          'name',
+          'first_name',
+          'last_name',
+          'verified',
+          'locale',
+          'timezone',
+          'link',
+          'gender',
+          'updated_time'],
+      'EXCHANGE_TOKEN': True,
+      'LOCALE_FUNC': lambda request: 'en_US',
+      'VERIFIED_EMAIL': False,
+      'VERSION': 'v2.4'}}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -182,9 +183,9 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-SOCIALACCOUNT_QUERY_EMAIL=ACCOUNT_EMAIL_REQUIRED
-SOCIALACCOUNT_EMAIL_REQUIRED=ACCOUNT_EMAIL_REQUIRED
-SOCIALACCOUNT_STORE_TOKENS=False
+SOCIALACCOUNT_QUERY_EMAIL = ACCOUNT_EMAIL_REQUIRED
+SOCIALACCOUNT_EMAIL_REQUIRED = ACCOUNT_EMAIL_REQUIRED
+SOCIALACCOUNT_STORE_TOKENS = False
 
 # LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'

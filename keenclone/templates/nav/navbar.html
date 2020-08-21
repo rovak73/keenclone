@@ -1,6 +1,8 @@
 {% load i18n account %}
+{% load cart_template_tags %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container-md">
 
 
     <a class="navbar-brand" href="#">
@@ -17,6 +19,7 @@
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'cart:item-list' %}">Cart</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'specialty:specialty-list' %}">Especialidades</a></li>
         {% if user.is_authenticated %}
         <li class="nav-item"><a class="nav-link" href="{% url 'account_email' %}">Change E-mail</a></li>
@@ -27,6 +30,10 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a></li>
         {% endif %}
         <li class="nav-item"><a class="nav-link" href="{% url 'profile:profile-list' %}">Profile List</a></li>
+        
+      </ul>
+      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+      <li class="nav-item"><a class="nav-link" href="{% url 'cart:order-summary' %}">N° Items: {{ request.user|cart_item_count }}</a></li>
       </ul>
 
     </div>
