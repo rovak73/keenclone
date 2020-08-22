@@ -7,14 +7,14 @@ from django.views.generic.list import MultipleObjectMixin
 class SpecialtyListView(ListView):
     model = Specialty
     template_name = "specialties/specialty_list.html"
-    paginate_by = 2
+    paginate_by = 6
     queryset = Specialty.objects.all()
 
 
 class SpecialtyDetailView(DetailView):
     model = Specialty
     template_name = "specialties/specialty_detail.html"
-    paginate_by = 1
+    paginate_by = 6
     queryset = Specialty.objects.all()
 
     def get_object(self):

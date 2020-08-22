@@ -1,16 +1,17 @@
 
 
+<div class="col-md-3 gx-2 gy-2">
+    <div class="card shadow">
 
-<div class="card card col-md-4 ml-auto shadow mb-2">
+        {% if specialty.picture %}<img src="{{ specialty.picture.url }}" class="card-img-top" alt="...">{% endif %}
+        <div class="card-body bg-dark text-white">
+            <h5 class="card-title">{{ specialty.specialty_name }}</h5>
+            <p class="card-text">{{ specialty.specialty_excerpt }}</p>
+        </div>
+        <div class="card-body bg-light">
+            <p class="card-text mb-2">Hay <span class="badge bg-secondary">{{ specialty.specialty_name|length }}</span> especialistas en {{ specialty.specialty_name }}</p>
+            <a href="{{ specialty.get_absolute_url }}" class="btn btn-outline-info btn-block">Ver Especialistas</a>
+        </div>
 
-    {% if specialty.picture %}<img src="{{ specialty.picture.url }}" class="card-img-top" alt="...">{% endif %}
-    <div class="card-body bg-dark text-white">
-        <h5 class="card-title">{{ specialty.specialty_name }}</h5>
-        <p class="card-text">{{ specialty.specialty_excerpt }}</p>
     </div>
-    <div class="card-body bg-light">
-        <p class="card-text mb-2">Hay <span class="badge bg-secondary">{{ specialty.specialty_name|length }}</span> especialistas en {{ specialty.specialty_name }}</p>
-        <a href="{{ specialty.get_absolute_url }}" class="btn btn-outline-info btn-block">Ver Especialistas</a>
-    </div>
-
 </div>

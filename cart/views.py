@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.shortcuts import render, get_object_or_404
-from .models import Item, OrderItem, Order
+from .models import Item, OrderItem, Order, BillingAddress
 from django.views.generic import ListView, DetailView, View
 from profiles.models import Profile
 from django.shortcuts import redirect
@@ -21,14 +21,35 @@ class CheckoutView(View):
         return render(self.request, 'cart/checkout.html', context)
 
     def post(self, *args, **kwargs):
-        form = CheckoutForm(request.POST or None)
-        print(self.request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            print('Form is valid')
-            return redirect('cart/checkout.html')
-        message.warning(self.request, "Failed checkout")
-        return redirect('cart/checkout.html')
+        form = CheckoutForm(self.request.POST or None)
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            if form.is_valid():
+                street_address = form.cleaned_data.get('street_address')
+                apartment_address = form.cleaned_data.get('apartment_address')
+                country = form.cleaned_data.get('country')
+                zip = form.cleaned_data.get('zip')
+                # TODO: 
+                # same_shipping_address = form.cleaned_data.get('same_shipping_address')
+                # save_info = form.cleaned_data.get('save_info')
+                payment_option = form.cleaned_data.get('payment_option')
+                billing_address = BillingAddress(
+                    user=self.request.user,
+                    street_address=street_address,
+                    apartment_address=apartment_address,
+                    country=country,
+                    zip=zip
+                )
+                billing_address.save()
+                order.billing_address = billing_address
+                order.save()
+                return redirect('cart:checkout')
+            messages.warning(self.request, "Failed checkout")
+            return redirect('cart:checkout')
+        except ObjectDoesNotExist:
+            messages.warning(self.request, 'Aún no tienes una orden activa')
+            return redirect("cart:order-summary")
+        
 
 
 class ItemListView(ListView):

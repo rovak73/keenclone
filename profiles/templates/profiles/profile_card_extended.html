@@ -2,7 +2,7 @@
 {% get_review_count for profile as review_count %}
 {% get_rating for profile as avg_rating %}
 
-<div class="card">
+<div class="card shadow">
     <h5 class="card-header">{{ object.profile_name }} {% render_rating for profile %}</h5>
     <div class="card-body">
         {% if profile.picture %}

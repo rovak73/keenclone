@@ -6,31 +6,16 @@
 <div class="container">
     <div class="bg-light text-dark mb-2 mt-2 p-1 rounded-lg">
 
-      <h3>Specialties</h3>
-      <p>{{ specialty.specialty_text }}</p>
+      <h3>Titulo</h3>
+      <p></p>
 
     </div>
-
 {% include "nav/pagination.html" %}
-
     <div class="row">
       
-      {% for specialty in object_list %}
-        {% include 'specialties/specialty_card_compact.html' %}
-      {% empty %}
-        No specialties yet.
-      {% endfor %}
+
       
     </div>
 {% include "nav/pagination.html" %}
 </div>
   
-
-
-
-
-
-
-
-
-{% endblock %}
