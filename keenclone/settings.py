@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'star_ratings',
     'reviews',
     'crispy_forms',
+    "crispy_tailwind",
     'specialties',
     'cart',
     'django_countries',
@@ -205,4 +206,6 @@ INTERNAL_IPS = [
 
 # CRISPY FORMS
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
