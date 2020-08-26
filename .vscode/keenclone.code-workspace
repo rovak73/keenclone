@@ -2,6 +2,9 @@
   "folders": [
     {
       "path": "../../keenclone"
+    },
+    {
+      "path": "../../env/lib/python3.8/site-packages/allauth"
     }
   ],
   "settings": {

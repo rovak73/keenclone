@@ -1,31 +1,17 @@
-{% extends "account/base.html" %}
-
-{% load i18n %}
-{% load account %}
-{% load tailwind_filters %}
-
-{% block head_title %}{% trans "Password Reset" %}{% endblock %}
-
-{% block content %}
-
-
 <div class=" flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 ">
   <div class="max-w-md w-full shadow-lg rounded-lg border border-gray-400 p-5">
 
     <div>
         <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-800">
-            {% trans "Password Reset" %}
+            card title
         </h2>
       
         <p class="mt-2 text-center text-sm leading-5 text-gray-600">
-            {% trans "Forgotten your password? Enter your e-mail address below, and we'll send you an e-mail allowing you to reset it." %}
+            card info
         </p>
     </div>
 
-    <form class="mt-8" method="POST" action="{% url 'account_reset_password' %}">
-
-        {% csrf_token %}
-        {{ form|crispy }}
+    <form class="mt-8" method="POST" action="{% url 'account_login' %}">
 
     <div class="mt-6 flex items-center justify-between">
         <div class="text-sm leading-5">
@@ -42,17 +28,10 @@
                     <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
                 </svg>
             </span>
-            {% trans 'Reset My Password' %}
+            submit button text
         </button>
     </div>
 
     </form>
-
-        <p class="mt-2 text-center text-sm leading-5 text-gray-600">
-            {% blocktrans %}Please contact us if you have any trouble resetting your password.{% endblocktrans %}
-        </p>
-
   </div>
 </div>
-
-{% endblock %}
