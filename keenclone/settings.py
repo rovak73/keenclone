@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'specialties',
     'cart',
     'django_countries',
+    'algoliasearch_django',
 
     'django.contrib.sites',  # make sure sites is included
     'allauth',
@@ -209,3 +210,8 @@ INTERNAL_IPS = [
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
+
+ALGOLIA = {
+    'APPLICATION_ID': 'Y9N5715APG',
+    'API_KEY': 'fb19a0e74039814b1a5f98f11575d944'
+}

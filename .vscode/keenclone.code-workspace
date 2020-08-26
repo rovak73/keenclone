@@ -5,6 +5,9 @@
     },
     {
       "path": "../../env/lib/python3.8/site-packages/allauth"
+    },
+    {
+      "path": "../../env/lib/python3.8/site-packages"
     }
   ],
   "settings": {
@@ -12,7 +15,7 @@
     "telemetry.enableTelemetry": false,
     "eslint.alwaysShowStatus": true,
     "eslint.format.enable": true,
-    "python.pythonPath": "env/bin/python",
+    "python.pythonPath": "/usr/bin/python3",
     "django.snippets.exclude": [
       "cms",
       "wagtail"
