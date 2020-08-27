@@ -2,3 +2,4 @@
 .yarn
 db.sqlite3
 node_modules/*
+vue_frontend/node_modules/*
