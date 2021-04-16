@@ -15,7 +15,7 @@ django-braces==1.14.0
 django-cogwheels==0.3
 django-countries==6.1.3
 django-crispy-forms==1.9.2
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
 django-extensions==3.0.3
 django-extra-views==0.13.0
 django-haystack==3.0b2
